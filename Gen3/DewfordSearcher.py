@@ -56,7 +56,9 @@ def TrendyPhraseSeed(x,trend1,trend2,frame):
 	FSeed = H16(x)
 	if (trend1 == w1) & (trend2 == w2):
 	  print(str(frame), ':', w1, w2, str(hex(FSeed)),str(frame + occ))
-	#return FSeed
+
+#Advance RNG once to make advance numbers consistent with Pokefinder
+Seed = RNGAdvance(Seed)
 
 #Advance RNG to min frame
 for y in range(0, MIN):

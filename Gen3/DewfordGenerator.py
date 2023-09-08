@@ -1,7 +1,7 @@
 from RNGFunctions import RNGAdvance
 from RNGFunctions import H16
 
-Seedstr = input('Input Initial Seed (this will be your TID in Emerald): ')
+Seedstr = input('Input Initial Seed (use 0x before hexadecimal seeds) (this will be your TID in Emerald): ')
 if 'x' in Seedstr:
 	Seed = int(Seedstr,16)
 else:
@@ -41,13 +41,15 @@ def TrendyPhraseSeed(x,frame):
 	occ += 2
 	FSeed = H16(x)
 	print(str(frame), ':', w1, w2, str(hex(FSeed)),str(frame + occ))
-	#return FSeed
+
+#Advance the RNG once to make advances consistent with Pokefinder
+Seed = RNGAdvance(Seed)
 
 #Advance RNG to min frame
 for y in range(0, MIN):
   Seed = RNGAdvance(Seed)
 
-#Print values in range that match given phrase
+#Print values in range
 for y in range(MIN,MAX):
   TrendyPhraseSeed(Seed,y)
   Seed = RNGAdvance(Seed)

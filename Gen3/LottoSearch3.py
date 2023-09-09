@@ -3,13 +3,9 @@ from RNGFunctions import H16
 
 TID = int(input('Enter your target ID: '))
 MaxDay = int(input('Max number of days: '))
-MinFrame = 100
 MaxFrame = int(input('Max number of advancements: '))
 
 Seed = 0
-
-for i in range(0,MinFrame):
-	Seed = RNGAdvance(Seed)
 
 def LRNGAdvance(S): 
 	MULT = 0x4e6d
@@ -23,6 +19,6 @@ def LottoDayAdvance(frame,seed,MaxDay,target):
 		if LSeed == target:
 			print(i, frame)
 
-for i in range(MinFrame,MaxFrame):
+for i in range(0,MaxFrame):
 	Seed = RNGAdvance(Seed)
 	LottoDayAdvance(i,Seed,MaxDay,TID)
